@@ -1,0 +1,1 @@
+# SPFX-AAD-Group-People-Webpart

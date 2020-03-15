@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "aad-group-people-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/aadGroupPeople/AadGroupPeopleWebPart.js",
+          "manifest": "./src/webparts/aadGroupPeople/AadGroupPeopleWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AadGroupPeopleWebPartStrings": "lib/webparts/aadGroupPeople/loc/{locale}.js"
+  }
+}

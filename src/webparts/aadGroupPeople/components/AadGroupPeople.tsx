@@ -19,7 +19,7 @@ export default class AadGroupPeople extends React.Component<IAadGroupPeopleProps
               <p className={ styles.description }>{escape(this.props.groupName)}</p>
               <ul>
                 {this.props.members.map((value) => {
-                  return <li>{value}</li>
+                  return <li>{value}</li>;
                 })}
               </ul>
               <a href="https://aka.ms/spfx" className={ styles.button }>

@@ -29,9 +29,8 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
 
     this.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
 
-      let groupMembers: string[] = [];  
+      let groupMembers: Array<any>[] = [];  
       let groupId: string = this.properties.groupName;
-      console.log("GroupID = " + groupId);
 
       client.api("groups/" + groupId + "/members").get((err, res) => {
         if (err) {
@@ -39,22 +38,17 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
           return;
         }
 
-        res.value.map((item: any) => {
-          console.log(item.displayName);
-          groupMembers.push(item.displayName);
-        });
+        groupMembers = res.value;
 
-        console.log("groupMembers: " + groupMembers.length);
-
-      const element: React.ReactElement<IAadGroupPeopleProps> = React.createElement(
-        AadGroupPeople,
-        {
-          groupName: this.properties.groupName,
-          members: groupMembers
-        }
-      );
-  
-      ReactDom.render(element, this.domElement);
+        const element: React.ReactElement<IAadGroupPeopleProps> = React.createElement(
+          AadGroupPeople,
+          {
+            groupName: this.properties.groupName,
+            members: groupMembers
+          }
+        );
+    
+        ReactDom.render(element, this.domElement);
 
       });
 
@@ -121,17 +115,6 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
 
         resolve(groups);
       });
-
-      /*setTimeout(() => {
-        resolve([{
-          key: 'sharedDocuments',
-          text: 'Shared Documents'
-        },
-          {
-            key: 'myDocuments',
-            text: 'My Documents'
-          }]);
-      }, 2000);*/
     });
   }
 

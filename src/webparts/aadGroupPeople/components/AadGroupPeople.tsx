@@ -15,7 +15,7 @@ export default class AadGroupPeople extends React.Component<IAadGroupPeopleProps
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>{escape(this.props.groupName)}</span>
+              <span className={ styles.title }>{escape(this.props.groupName[1])}</span>
                 {this.props.members.map((user: any) => {
                   return (<div className={styles.description}>
                     <Persona 

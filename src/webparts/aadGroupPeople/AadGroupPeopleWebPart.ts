@@ -18,7 +18,7 @@ import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 export interface IAadGroupPeopleWebPartProps {
-  groupName: string;
+  groupName: [string, string];
 }
 
 export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGroupPeopleWebPartProps> {
@@ -30,7 +30,7 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
     this.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
 
       let groupMembers: Array<any>[] = [];  
-      let groupId: string = this.properties.groupName;
+      let groupId: string = this.properties.groupName[0];
 
       client.api("groups/" + groupId + "/members").get((err, res) => {
         if (err) {
@@ -82,7 +82,7 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
                   label: strings.GroupFieldLabel,
                   loadOptions: this.loadGroups.bind(this),
                   onPropertyChange: this.onGroupChange.bind(this),
-                  selectedKey: this.properties.groupName
+                  selectedKey: this.properties.groupName[0]
                 })
               ]
             }

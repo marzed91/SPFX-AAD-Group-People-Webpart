@@ -1,4 +1,4 @@
 export interface IAadGroupPeopleProps {
-  groupName: string;
+  groupName: [string, string];
   members: Array<any>[];
 }

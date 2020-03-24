@@ -35,13 +35,17 @@ export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGr
       let groupMembers: Array<any>[] = [];  
       let groupId: string = this.properties.groupName[0];
 
-      client.api("groups/" + groupId + "/members").get((err, res) => {
+      client.api("groups/" + groupId + "/transitiveMembers").get((err, res) => {
         if (err) {
           console.error(err);
           return;
         }
 
-        groupMembers = res.value;
+        res.value.map((elem: any) => {
+          if(elem["@odata.type"] === "#microsoft.graph.user"){
+            groupMembers.push(elem);
+          }
+        });
 
         const element: React.ReactElement<IAadGroupPeopleProps> = React.createElement(
           AadGroupPeople,

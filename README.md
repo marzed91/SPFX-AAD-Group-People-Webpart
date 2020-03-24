@@ -32,6 +32,6 @@ gulp package-solution - TODO
 - [ ] Make title optional:
 By default, the title should be the Groupname, but users should be able to change or deactivate it.
 
-- [ ] Handle nested groups:
+- [x] Handle nested groups:
 As of now, users in nested groups are ignored and the group is shown like a user but without any details.
 All users should be shown independantly of wheter they are in a nested group or not. Nested groups however don't need to be shown.

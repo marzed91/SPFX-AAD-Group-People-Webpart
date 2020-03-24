@@ -2,29 +2,39 @@
 
 .aadGroupPeople {
   .container {
-    max-width: 700px;
+    //max-width: 700px;
     margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    //box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
   }
 
   .row {
     @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
+    //@include ms-fontColor-white;
+    //background-color: $ms-color-themeDark;
+    //padding: 20px;
   }
 
   .column {
     @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
+    //@include ms-lg10;
+    //@include ms-xl8;
+    @include ms-lg12;
+    @include ms-xl12;
+
+    //@include ms-xlPush2;
+    //@include ms-lgPush1;
   }
 
   .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
+    //@include ms-font-xl;
+    //@include ms-fontColor-white;
+
+    font-family: "Segoe UI Web (West European)","Segoe UI","-apple-system,BlinkMacSystemFont",Roboto,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 24px;
+    margin-bottom: 18px;
+    font-weight: 100;
+
   }
 
   .subTitle {
@@ -96,6 +106,21 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  mgt-person {
+    --avatar-size-s: 48px;
+    --avatar-size: 48px; // avatar size when both name and email are shown
+    //--avatar-font-size--s: 16px;
+    //--avatar-font-size: 32px; // font-size when both name and email are shown
+    //--avatar-border: 0;
+    //--initials-color: white;
+    //--initials-background-color: magenta;
+    //--font-size: 12px;
+    //--font-weight: 500;
+    //--color: black;
+    //--email-font-size: 12px;
+    //--email-color: black;
   }
 
 }

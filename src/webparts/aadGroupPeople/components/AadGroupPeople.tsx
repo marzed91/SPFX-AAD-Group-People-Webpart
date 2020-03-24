@@ -28,22 +28,12 @@ export default class AadGroupPeople extends React.Component<IAadGroupPeopleProps
         <div className={ styles.container }>
           <div className={ styles.row }>
             <div className={ styles.column }>
-              <span className={ styles.title }>{escape(this.props.groupName[1])}</span>
+              <h2 className={ styles.title } role="heading">{escape(this.props.groupName[1])}</h2>
                 {this.props.members.map((user: any) => {
-                  return (<div className={styles.description}>
-                    <Persona 
-                    text={user.displayName}
-                    secondaryText={user.userPrincipalName}
-                    imageUrl={user.PictureUrl}
-                    size={PersonaSize.size48}
-                    className={styles.persona}
-                    />
+                  return (<div className={styles.personaTile}>
+                    <mgt-person person-query={user.userPrincipalName} show-name show-email person-card="hover" />
                   </div>);
                 })}
-                <mgt-person person-query="dean.dalaware@fivou.onmicrosoft.com" show-name person-card="hover" />
-              <a href="https://aka.ms/spfx" className={ styles.button }>
-                <span className={ styles.label }>Learn more</span>
-              </a>
             </div>
           </div>
         </div>

@@ -15,7 +15,8 @@ import { IDropdownOption } from 'office-ui-fabric-react/lib/components/Dropdown'
 import { update, get } from '@microsoft/sp-lodash-subset';
 
 import { MSGraphClient } from '@microsoft/sp-http';
-import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
+
+import { Providers, SharePointProvider } from '@microsoft/mgt/dist/commonjs';
 
 export interface IAadGroupPeopleWebPartProps {
   groupName: [string, string];
@@ -23,9 +24,11 @@ export interface IAadGroupPeopleWebPartProps {
 
 export default class AadGroupPeopleWebPart extends BaseClientSideWebPart <IAadGroupPeopleWebPartProps> {
 
-  public render(): void {
+  protected async onInit() {
+    Providers.globalProvider = new SharePointProvider(this.context);
+  }
 
-    
+  public render(): void {
 
     this.context.msGraphClientFactory.getClient().then((client: MSGraphClient): void => {
 

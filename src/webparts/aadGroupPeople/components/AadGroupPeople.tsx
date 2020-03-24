@@ -8,6 +8,19 @@ import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { MSGraphClient } from '@microsoft/sp-http';
 import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'mgt-person': any;
+      'mgt-people': any;
+      'mgt-people-picker': any;
+      'mgt-agenda': any;
+      'mgt-tasks': any;
+      template: any;
+    }
+  }
+}
+
 export default class AadGroupPeople extends React.Component<IAadGroupPeopleProps, {}> {
   public render(): React.ReactElement<IAadGroupPeopleProps> {
     return (
@@ -27,6 +40,7 @@ export default class AadGroupPeople extends React.Component<IAadGroupPeopleProps
                     />
                   </div>);
                 })}
+                <mgt-person person-query="dean.dalaware@fivou.onmicrosoft.com" show-name person-card="hover" />
               <a href="https://aka.ms/spfx" className={ styles.button }>
                 <span className={ styles.label }>Learn more</span>
               </a>
